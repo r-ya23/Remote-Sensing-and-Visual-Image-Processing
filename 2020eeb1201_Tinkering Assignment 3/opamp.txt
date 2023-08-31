@@ -1,1 +1,0 @@
--> when opamp is open loop the gain is very high hence the outpt gets saturated
