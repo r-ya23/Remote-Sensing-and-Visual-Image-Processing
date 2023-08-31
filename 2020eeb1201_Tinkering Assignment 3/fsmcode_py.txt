@@ -1,0 +1,30 @@
+Encoding = {'S0': '000',
+            'S1': '001',
+            'S2': '010',
+            'S4': '100'
+            }
+StateTable = {'S0':
+                {
+                 '0': ('S1','0'),
+                 '1': ('S4','0')
+                 },
+              'S1':
+                  {
+                    '0': ('S1','0'),
+                    '1': ('S2','0')
+                  }
+            }
+                    
+def printJK(init,final):
+    if init=='0' and final == '0': return ('0','X')
+    if init=='0' and final == '1': return ('1','X')
+    if init=='1' and final == '0': return ('X','1')
+    if init=='1' and final == '1': return ('X', '0')
+allStates = StateTable.keys()
+for state in allStates:
+    (NextState,Output) = StateTable[state]['0']
+    initStateEncoding = Encoding[state]
+    FinalStateEncoding = Encoding[NextState]
+    numBits = len(initStateEncoding)
+    for i in range(numBits):
+        printJK(initStateEncoding[i],FinalStateEncoding[i])
